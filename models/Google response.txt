@@ -1,0 +1,32 @@
+Profile: {
+  id: '111294311855685749100',
+  displayName: 'Sondre Søråsdekkan',
+  name: { familyName: 'Søråsdekkan', givenName: 'Sondre' },
+  emails: [ { value: 'sondrsor91@gmail.com', verified: true } ],
+  photos: [
+    {
+      value: 'https://lh6.googleusercontent.com/-N61eAjHheBE/AAAAAAAAAAI/AAAAAAAADPk/AMZuuckCheoiaErf_OU1gkCNHour8rtpNA/s96-c/photo.jpg'
+    }
+  ],
+  provider: 'google',
+  _raw: '{\n' +
+    '  "sub": "111294311855685749100",\n' +
+    '  "name": "Sondre Søråsdekkan",\n' +
+    '  "given_name": "Sondre",\n' +
+    '  "family_name": "Søråsdekkan",\n' +
+    '  "picture": "https://lh6.googleusercontent.com/-N61eAjHheBE/AAAAAAAAAAI/AAAAAAAADPk/AMZuuckCheoiaErf_OU1gkCNHour8rtpNA/s96-c/photo.jpg",\n' +
+    '  "email": "sondrsor91@gmail.com",\n' +
+    '  "email_verified": true,\n' +
+    '  "locale": "no"\n' +
+    '}',
+  _json: {
+    sub: '111294311855685749100',
+    name: 'Sondre Søråsdekkan',
+    given_name: 'Sondre',
+    family_name: 'Søråsdekkan',
+    picture: 'https://lh6.googleusercontent.com/-N61eAjHheBE/AAAAAAAAAAI/AAAAAAAADPk/AMZuuckCheoiaErf_OU1gkCNHour8rtpNA/s96-c/photo.jpg',
+    email: 'sondrsor91@gmail.com',
+    email_verified: true,
+    locale: 'no'
+  }
+}
