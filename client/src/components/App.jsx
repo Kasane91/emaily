@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, BrowserRouter as Router } from "react-router-dom";
+import { connect } from "react-redux";
 import Header from "./UI/Header/Header";
+import * as actions from "../store/actions/index";
 
 const Dashboard = () => <h2>Dashboard</h2>;
 const SurveyNew = () => <h2>SurveyNew</h2>;
 const Landing = () => <h2>LANDING</h2>;
 
 const App = (props) => {
+  const { fetchUserInit } = props;
+
+  useEffect(() => {
+    fetchUserInit();
+  }, [fetchUserInit]);
+
   return (
     <div>
       <Router>
@@ -21,4 +29,10 @@ const App = (props) => {
   );
 };
 
-export default App;
+mapDispatchToProps = (dispatch) => {
+  return {
+    fetchUserInit: () => dispatch(actions.fetchUser()),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(App);
