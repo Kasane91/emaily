@@ -1,1 +1,1 @@
-export { fetchUser } from "./authActions";
+export { fetchUser, handleToken } from "./authActions";

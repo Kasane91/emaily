@@ -14,6 +14,8 @@ passport.deserializeUser((id, done) => {
     done(null, user);
   });
 });
+//passport initializes the mongoose model here,
+//and returns a document instance, that also has access to the models method like .save(). This is then attached to each request
 
 passport.use(
   new GoogleStrategy(

@@ -15,3 +15,5 @@ ReactDom.render(
   </Provider>,
   document.getElementById("root")
 );
+
+console.log(process.env.REACT_APP_STRIPE_PUBLIC_KEY);

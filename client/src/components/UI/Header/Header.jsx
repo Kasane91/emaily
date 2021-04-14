@@ -1,22 +1,39 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import styled from "styled-components";
+import Payments from "../../stripe-checkout/Payments";
 
-import mailLogo from "../../resources/LogoMakr-6IzQKK.png";
 import LoadingSpinner from "../Spinners/LoadingDots";
 
 const Header = (props) => {
   const renderAuthContent = () => {
     switch (props.auth) {
       case null:
-        return <LoadingSpinner />;
+        return (
+          <li>
+            <LoadingSpinner />
+          </li>
+        );
 
       case false:
-        return <a href="/auth/google">Log in with Google</a>;
+        return (
+          <li>
+            <a href="/auth/google">Log in with Google</a>
+          </li>
+        );
 
       default:
-        return <a href="/api/logout">Log Out</a>;
+        return [
+          <li key="PaymentLink">
+            <Payments />
+          </li>,
+          <li style={{ margin: "0 10px" }} key="credits_number">
+            Credits: {props.auth.credits}
+          </li>,
+          <li key="LogoutLink">
+            <a href="/api/logout">Log Out</a>
+          </li>,
+        ];
     }
   };
   console.log(props);
@@ -28,7 +45,7 @@ const Header = (props) => {
         </Link>
 
         <ul id="nav-mobile" className="right ">
-          <li>{renderAuthContent()}</li>
+          {renderAuthContent()}
         </ul>
       </div>
     </nav>
