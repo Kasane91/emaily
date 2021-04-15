@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 import Header from "./UI/Header/Header";
 import * as actions from "../store/actions/index";
 import Landing from "../components/Landing/Landing";
+import Dashboard from "../components/dashboard/dashboard";
 
-const Dashboard = () => <h2>Dashboard</h2>;
 const SurveyNew = () => <h2>SurveyNew</h2>;
 
 const App = (props) => {
