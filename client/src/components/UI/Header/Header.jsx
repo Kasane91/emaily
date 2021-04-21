@@ -40,7 +40,11 @@ const Header = (props) => {
   return (
     <nav>
       <div className="nav-wrapper">
-        <Link className="left brand-logo" to={props.auth ? "/surveys" : "/"}>
+        <Link
+          style={{ marginLeft: "12px" }}
+          className="left brand-logo"
+          to={props.auth ? "/surveys" : "/"}
+        >
           Emaily
         </Link>
 

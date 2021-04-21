@@ -3,10 +3,9 @@ import { Route, BrowserRouter as Router } from "react-router-dom";
 import { connect } from "react-redux";
 import Header from "./UI/Header/Header";
 import * as actions from "../store/actions/index";
-import Landing from "../components/Landing/Landing";
-import Dashboard from "../components/dashboard/dashboard";
-
-const SurveyNew = () => <h2>SurveyNew</h2>;
+import Landing from "../container/Landing/Landing";
+import Dashboard from "../container/dashboard/dashboard";
+import SurveyNew from "../container/surveyNew/surveyNew";
 
 const App = (props) => {
   const { fetchUserInit } = props;
