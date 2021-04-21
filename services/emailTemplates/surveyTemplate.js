@@ -7,12 +7,12 @@ module.exports = (survey) => {
       <p>Please answer the following question</p>
       <p>${survey.body}</p>
       <div >
-      <a style="margin: 12 16px" href="${process.env.REDIRECT_URI}api/surveys/thanks">Yes</a>
+      <a style="margin: 12 16px" href="${process.env.REDIRECT_URI}api/surveys/${survey.id}/yes">Yes</a>
   
       </div>
       <div >
     
-      <a style="margin: 12 16px" href="${process.env.REDIRECT_URI}api/surveys/thanks">No</a>
+      <a style="margin: 12 16px" href="${process.env.REDIRECT_URI}api/surveys/${survey.id}/no">No</a>
       </div>
       
     </div>

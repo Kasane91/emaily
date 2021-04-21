@@ -47,7 +47,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onSubmit: (values) => dispatch(actions.submitSurvey(values)),
+    onSubmit: (values, history) =>
+      dispatch(actions.submitSurvey(values, history)),
   };
 };
 

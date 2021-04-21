@@ -1,4 +1,7 @@
 const passport = require("passport");
+const { Path } = require("path-parser");
+const { URL } = require("url");
+const _ = require("lodash");
 const mongoose = require("mongoose");
 const requireLogin = require("../middleswares/requireLogin");
 const creditCheck = require("../middleswares/creditCheck");
@@ -11,6 +14,39 @@ module.exports = (app) => {
     res.send(
       "Thanks for your feedback! Add some markup here to make the user feel appreciated"
     );
+  });
+
+  app.post("/api/surveys/webhooks", (req, res) => {
+    const p = new Path("/api/surveys/:surveyId/:choice");
+    _.chain(req.body)
+      .map(({ url, email }) => {
+        const match = p.test(new URL(url).pathname);
+        if (match) {
+          return {
+            email,
+            surveyId: match.surveyId,
+            choice: `answer_${match.choice}`,
+          };
+        }
+      })
+      .compact()
+      .uniqBy("email", "surveyId")
+      .each(({ surveyId, email, choice }) => {
+        Survey.updateOne(
+          {
+            _id: surveyId,
+            recipients: { $elemMatch: { email: email, hasResponded: false } },
+          },
+          {
+            $inc: { [choice]: 1 },
+            $set: { "recipients.$.hasResponded": true },
+          }
+        ).exec();
+      })
+
+      .value();
+
+    res.send("YOLO");
   });
 
   app.post("/api/surveys", requireLogin, creditCheck, async (req, res) => {
