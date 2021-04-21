@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import SurveyForm from "../../components/surveys/surveyForm";
 
+import SurveyForm from "../../components/surveys/surveyForm";
+import { reduxForm } from "redux-form";
 import SurveyFormReview from "../../components/surveys/surveyFormReview";
 
 //PARENT CONTAINER FOR SURVEYFORM AND SURVEYREVIEW
@@ -28,4 +29,6 @@ const SurveyNew = (props) => {
   return <div>{renderContent}</div>;
 };
 
-export default SurveyNew;
+export default reduxForm({
+  form: "surveyForm",
+})(SurveyNew);
