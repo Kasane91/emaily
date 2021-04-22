@@ -7,3 +7,9 @@ export const submitSurvey = (values, history) => async (dispatch) => {
   history.push("/surveys");
   dispatch({ type: actions.FETCH_USER, payload: res.data });
 };
+
+export const fetchSurveys = () => async (dispatch) => {
+  const response = await axios.get("api/surveys");
+
+  dispatch({ type: actions.FETCH_SURVEY, payload: response.data });
+};

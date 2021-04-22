@@ -10,7 +10,16 @@ const Mailer = require("../services/Mailer");
 const surveyTemplate = require("../services/emailTemplates/surveyTemplate");
 
 module.exports = (app) => {
-  app.get("/api/surveys/thanks", (req, res) => {
+  app.get("/api/surveys", requireLogin, async (req, res) => {
+    console.log(req.user);
+    const surveys = await Survey.find({ _user: req.user.id }).select({
+      recipients: false,
+    });
+    console.log(surveys);
+    res.send(surveys);
+  });
+
+  app.get("/api/surveys/:surveyId/:choice", (req, res) => {
     res.send(
       "Thanks for your feedback! Add some markup here to make the user feel appreciated"
     );
@@ -40,6 +49,7 @@ module.exports = (app) => {
           {
             $inc: { [choice]: 1 },
             $set: { "recipients.$.hasResponded": true },
+            $set: { lastResponded: new Date() },
           }
         ).exec();
       })
